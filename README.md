@@ -1,7 +1,9 @@
 # ASWW2
 
-## Models
-The BERT models are too large to upload to this repository so you will need to install them separately from https://github.com/google-research/bert. We primarily used the uncased base model.
+## BERT
+For information on how to get started with BERT, please read our BERT guide!
+
+Note that the BERT models are too large to upload to this repository, so you will need to install them separately from https://github.com/google-research/bert. We primarily used the uncased base model.
 
 ## Example Scripts
 
