@@ -1,4 +1,4 @@
-,transcriber_tag,expert_tag_1,score_1,expert_tag_2,score_2,expert_tag_3,score_3
+index,transcriber_tag,expert_tag_1,score_1,expert_tag_2,score_2,expert_tag_3,score_3
 1825,jobturnover,jobturnover,1.0,jobevluation,0.7679225921654954,jobpreference,0.7091312093902872
 3214,sexcontact,sexcontact,1.0,sex,0.9363365709109314,maritalstatus,0.5433573900469072
 1635,hospitalization,hospitalization,1.0,hospitalfacilities,0.9041627311187574,doctors,0.8637697587655684
