@@ -24,7 +24,7 @@ A variety of tags were given to the transcribed documents, a subset of which wer
 
 The embeddings for each transcriber tag were compared to the embeddings of the expert tags. Each pairing was ranked by cosine simialrity, and the top three expert tag matches for each transcriber tag were stored. We used Sentence-BERT for getting tag embeddings, since their model is more fine-tuned for semantic textual similarity.
 
-This notebook can be found under scripts/TagApprox_SentenceBert.ipynb and the resulting matches at data/tag_approx_space.csv.
+This notebook can be found under scripts/TagMatch.ipynb and the resulting matches at data/tag_match.csv.
 
 ### Previous Implementation
-Previously, we implemented this using bert-as-service. However, we found that the resulting matches were often more lexically similar than semantically similar. You can find this notebook under scripts/TagApprox.ipynb, and an Excel file containing the resulting matches at data/tag_approx_space.xlsx.
+Previously, we implemented this using bert-as-service. However, we found that the resulting matches were often more lexically similar than semantically similar. You can find this notebook under scripts/TagMatch_BAS.ipynb and the resulting matches at data/tag_match_BAS.xlsx.
