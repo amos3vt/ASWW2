@@ -14,7 +14,7 @@
 \renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
 
 \title{A Simple guide to text embedding with BERT for the first time}
-\author{American Soldier in WWII Project Team}
+\author{Savannah Amos, Yash Joshi, Drew Klaubert}
 \date{June 2020}
 
 \begin{document}
@@ -25,6 +25,7 @@
 \begin{itemize}
     \item This is a guide that will show how to use BERT to obtain embeddings of text.  We will cover everything from the initial installation of BERT, to showing how the model works and finally being able to embed our own pieces of text.
     \item This guide will be done using Anaconda and assumes that you already have it installed with some familiarity with it. It is also required that you are running a version of Python that is 3.5 or newer and have a fundamental understanding of the Python programming language.
+    \item Mac Users Beware: This guide was done using a machine running windows and may not be completely compatible with the Mac operating system. Work-arounds for such issues are in development and will be supplied ASAP
     \item[]
     \textit{Optional: it is encouraged that you have some experience using word2vec before proceeding with this guide as that will build basic intuition as to how word embedding works}
 \end{itemize}
@@ -173,11 +174,63 @@ Now that we have the fundamental knowledge of how this model is working, lets us
     \vspace{.1cm}\\
     \includegraphics[scale = .7]{sample_list.png}\\
     \vspace{.1cm}\\
-    Now we have two different embeddings. One for each of the sentences. Now we can start doing comparisons between these sentences through techniques like cosine similarity.
+    Now we have two different embeddings. One for each of the sentences. Now we can start doing comparisons between these sentences through techniques like cosine similarity. In order to do that, we just need to import some libraries and conduct our experiment\\
+    \vspace{.1cm}\\
+    \includegraphics[scale = .775]{cosine_sim.png}
+    \vspace{.1cm}\\
+    Keeping in mind that cosine similarity will give us a number between 0 and 1, we see something that was to be expected. The similarity between the first and the second is not extremely high.  If we were to compare the first sentence to itself, we get the cosine of the angle is 1 so the angle itself is 0.\\
+    \vspace{.2cm}\\
+    A closing note on this: From our experiments we have found that embedding a sentence with BERT may be a little decieving.  Note in the first section, we took the embedding for all the tokens in a sentence and averaged them together.  Doing this tends to lose some of the context, especially when wanting to embed and entire paragraph.  The next section will address that issue.
     \end{enumerate}
     
     
 \end{enumerate}
 
+\section*{Sentence-BERT}
+
+The past sections are great for embedding single words and some semantically simple sentences and will work great for most cases.  Embedding an entire paragraph may get a little tricky with those methods because we lose some of the context of the sentence by simply averaging all of the different word embeddings. This section will walk through Sentence-BERT which we have found to be a better way to embed an entire sentence in context.
+
+\begin{enumerate}
+    \item \textbf{Installation}
+    \begin{enumerate}
+    \item[]
+    The installation for this is not too bad since we have a lot of the basic stuff already done. First we need to install sentence transformers which can be done with the following command in the Anaconda prompt:
+    
+    \begin{verbatim}
+                        pip install -U sentence-transformers
+    \end{verbatim}
+    Note: You most likely already have this satisfied if you have done the two previous sections. 
+    \item[] And that's it for the installation.  There is an alternative option for installation right through the UKPLab github repository that this portion of the guide is inspired from. They are liked below if you are interested in reading more. \\\url{https://github.com/UKPLab/sentence-transformers}
+    
+    \end{enumerate}
+    
+    \item \textbf{Using This Model}
+    \begin{enumerate}
+        \item[] Using this model is relatively simple to use and similar to using the Bert-as-service client. We need a cell in our python notebook the imports the sentence transformer:\\
+        \vspace{.1cm}\\
+        \includegraphics[scale = .77]{import_transform.png}
+        \vspace{.1cm}\\
+        Note: This took about a minute to fully download on my machine.
+        
+        \item[] Now we can simply start running our experiments like we were doing last time.  For this we will use the same sample sentences as before.\\
+        \vspace{.1cm}\\
+        \includegraphics[scale = .71]{sentence_bert_example.png}
+        \vspace{.1cm}\\
+        And just like that we have embeddings of these sample sentences.  Now lets show that we get different embeddings with this version of BERT by doing another cosine similarity experiment.\\
+        \vspace{.1cm}\\
+        \includegraphics[scale = .715]{sentence_bert_cos.png}
+        \vspace{.1cm}\\
+        We are getting a different cosine similarity between the two sample sentences which means we are getting different embeddings.  Again, through our experimentation, this seems to be the best way to obtain embeddings for entire sentences and still be able to preserve the context of the sentence.
+    \end{enumerate}
+\end{enumerate} 
+
+\section*{Conclusion}
+So there is three different way of deploying BERT to get embeddings for words and sentences.  As stated before this guide is in the early stages of development and may have some flaws.  If any issues with this guide arise and are need of fixing, the emails to the contributors have been included below.
+
+\begin{verbatim}
+Savannah Amos - amos3@vt.edu
+Yash Joshi - yashjoshi@vt.edu
+Drew Klaubert - kdrew17@vt.edu
+\end{verbatim}
 
 \end{document}
